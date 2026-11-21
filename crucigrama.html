@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#172554">
+
+    <title>Crucigrama | Historia de Colombia</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .crucigrama-contenedor {
+            overflow-x: auto;
+            padding: 12px;
+            background: #e5e7eb;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        #tableroCrucigrama {
+            display: grid;
+            gap: 2px;
+            width: max-content;
+            margin: auto;
+        }
+
+        .celda-crucigrama {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            background: #172554;
+        }
+
+        .celda-crucigrama.activa {
+            background: white;
+        }
+
+        .celda-crucigrama input {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #94a3b8;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 0;
+            color: #172554;
+            background: transparent;
+        }
+
+        .celda-crucigrama input:focus {
+            outline: 2px solid #f59e0b;
+            background: #fef3c7;
+        }
+
+        .numero-celda {
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            font-size: 8px;
+            color: #64748b;
+            pointer-events: none;
+        }
+
+        .pista {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .pista strong {
+            color: #1d4ed8;
+        }
+
+        .acciones-crucigrama {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .acciones-crucigrama button {
+            flex: 1;
+            min-width: 130px;
+        }
+
+        #mensajeCrucigrama {
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .seccion-extra {
+            background: white;
+            padding: 18px;
+            border-radius: 14px;
+            margin: 20px 0;
+        }
+
+        .seccion-extra h2 {
+            color: #1e3a8a;
+        }
+
+        #resultadoFinal {
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        #resumenHistorico {
+            line-height: 1.7;
+        }
+
+        .boton-pista {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        .boton-final {
+            background: #15803d;
+            color: white;
+        }
+
+        @media (max-width: 400px) {
+            .celda-crucigrama {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">🇨🇴 Historia de Colombia</div>
+        <span class="subtitle">Aprende jugando</span>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <span class="tag">ACTIVIDAD HISTÓRICA</span>
+
+            <h1>🧩 Crucigrama</h1>
+
+            <p id="nombrePeriodo">
+                Cargando periodo...
+            </p>
+
+            <p>
+                Lee las pistas y completa las palabras
+                relacionadas con esta época de Colombia.
+            </p>
+        </section>
+
+        <section class="periodos">
+
+            <h2>Tu progreso</h2>
+
+            <p id="contadorProgreso">
+                0 palabras completadas
+            </p>
+
+            <div style="
+                width: 100%;
+                height: 12px;
+                background: #dbeafe;
+                border-radius: 20px;
+                overflow: hidden;
+            ">
+                <div id="rellenoProgreso" style="
+                    width: 0%;
+                    height: 100%;
+                    background: #16a34a;
+                    transition: width 0.3s;
+                "></div>
+            </div>
+
+        </section>
+
+        <section class="periodos">
+
+            <h2>Tablero</h2>
+
+            <p>
+                Escribe una letra en cada casilla.
+                Las palabras se cruzan entre sí.
+            </p>
+
+            <div class="crucigrama-contenedor">
+                <div id="tableroCrucigrama"></div>
+            </div>
+
+        </section>
+
+        <section class="periodos">
+
+            <h2>Horizontales y verticales</h2>
+
+            <div id="listaPistas"></div>
+
+            <div class="acciones-crucigrama">
+
+                <button
+                    id="btnPista"
+                    class="boton-pista"
+                    type="button">
+                    💡 Dame una pista
+                </button>
+
+                <button
+                    id="btnComprobar"
+                    type="button">
+                    Comprobar respuestas
+                </button>
+
+                <button
+                    id="btnReiniciar"
+                    type="button">
+                    Borrar respuestas
+                </button>
+
+            </div>
+
+            <p id="mensajeCrucigrama"></p>
+
+        </section>
+
+        <section
+            id="desafioFinal"
+            class="seccion-extra"
+            hidden>
+
+            <div style="text-align: center; font-size: 48px;">
+                🏆
+            </div>
+
+            <h2 style="text-align: center;">
+                ¡Desafío completado!
+            </h2>
+
+            <div id="resultadoFinal"></div>
+
+            <hr>
+
+            <h3>📜 Tu recorrido histórico</h3>
+
+            <div id="resumenHistorico"></div>
+
+            <div class="acciones-crucigrama">
+
+                <button
+                    id="btnVolverPeriodoFinal"
+                    class="boton-final"
+                    type="button">
+                    Volver al periodo
+                </button>
+
+            </div>
+
+        </section>
+
+        <button id="btnVolver" type="button">
+            ← Volver al periodo
+        </button>
+
+    </main>
+
+    <footer>
+        <p>Historia de Colombia · Aprende jugando 🇨🇴</p>
+    </footer>
+
+    <script src="crucigrama.js"></script>
+
+</body>
+</html>
+

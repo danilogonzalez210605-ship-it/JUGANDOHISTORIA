@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#172554">
+
+    <title>Periodo histórico | Historia de Colombia</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">🇨🇴 Historia de Colombia</div>
+        <span class="subtitle">Explora y aprende</span>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+
+            <span class="tag">PERIODO HISTÓRICO</span>
+
+            <div id="iconoPeriodo" style="font-size: 45px; margin-top: 20px;">
+                🏺
+            </div>
+
+            <h1 id="nombrePeriodo">
+                Cargando periodo...
+            </h1>
+
+            <p id="descripcionPeriodo">
+                Estamos preparando el contenido histórico.
+            </p>
+
+        </section>
+
+        <section class="periodos">
+
+            <h2>Explora este periodo</h2>
+
+            <p id="contenidoPeriodo">
+                Aquí encontrarás información sobre esta época.
+            </p>
+
+        </section>
+
+        <section class="periodos">
+
+            <h2>Actividades disponibles</h2>
+
+            <div class="grid">
+
+                <article class="card">
+
+                    <div style="font-size: 32px;">🔎</div>
+
+                    <h3>Sopa de letras</h3>
+
+                    <p>
+                        Encuentra personajes, acontecimientos
+                        y conceptos importantes.
+                    </p>
+
+                    <a id="enlaceSopa" href="sopa.html">
+                        <button type="button">
+                            Jugar ahora →
+                        </button>
+                    </a>
+
+                </article>
+
+                <article class="card">
+
+                    <div style="font-size: 32px;">🧩</div>
+
+                    <h3>Crucigrama</h3>
+
+                    <p>
+                        Resuelve pistas relacionadas
+                        con la historia de Colombia.
+                    </p>
+
+                    <a id="enlaceCrucigrama" href="crucigrama.html">
+                        <button type="button">
+                            Jugar ahora →
+                        </button>
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <button id="btnVolverInicio">
+            ← Volver a los periodos
+        </button>
+
+    </main>
+
+    <footer>
+        <p>Historia de Colombia · Aprende jugando 🇨🇴</p>
+    </footer>
+
+    <script src="periodo.js"></script>
+
+    <script>
+        const parametros = new URLSearchParams(window.location.search);
+        const periodoActual = parametros.get("periodo") || "independencia";
+
+        document.getElementById("enlaceCrucigrama").href =
+            `crucigrama.html?periodo=${periodoActual}`;
+    </script>
+
+</body>
+</html>
+
+

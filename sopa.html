@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#172554">
+
+    <title>Sopa de letras | Historia de Colombia</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">🇨🇴 Historia de Colombia</div>
+        <span class="subtitle">Actividad educativa</span>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <span class="tag">MINIJUEGO HISTÓRICO</span>
+
+            <h1>Sopa de letras</h1>
+
+            <p>
+                Encuentra las palabras relacionadas
+                con la historia de Colombia.
+            </p>
+        </section>
+
+        <section class="periodos">
+
+            <h2>
+                Periodo:
+                <span id="nombrePeriodo">Cargando...</span>
+            </h2>
+
+            <p>
+                Encuentra las palabras ocultas
+                en la cuadrícula.
+            </p>
+
+            <!-- CONTADOR DE PROGRESO -->
+
+            <div class="progreso-juego">
+
+                <div class="progreso-texto">
+                    <strong>Tu progreso</strong>
+                    <span id="contadorProgreso">0/5</span>
+                </div>
+
+                <div class="barra-progreso">
+                    <div id="rellenoProgreso"></div>
+                </div>
+
+                <p>Palabras encontradas</p>
+
+            </div>
+
+            <!-- PALABRAS -->
+
+            <div id="listaPalabras"></div>
+
+            <!-- TABLERO -->
+
+            <div id="tableroSopa"></div>
+
+        </section>
+
+        <button id="btnVolver">
+            ← Volver al inicio
+        </button>
+
+    </main>
+
+    <!-- VENTANA HISTORICA -->
+
+    <div id="modalContexto" class="modal-contexto" hidden>
+
+        <div class="contenido-modal">
+
+            <span class="tag">¡PALABRA ENCONTRADA!</span>
+
+            <h2 id="tituloContexto">
+                ¡Excelente!
+            </h2>
+
+            <p id="textoContexto">
+                Has encontrado una palabra histórica.
+                ¿Quieres conocer su importancia?
+            </p>
+
+            <div class="botones-modal">
+
+                <button id="btnAprender">
+                    Sí, quiero aprender
+                </button>
+
+                <button id="btnAhoraNo">
+                    Ahora no
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PANTALLA DE VICTORIA -->
+
+    <div id="modalVictoria" class="modal-contexto" hidden>
+
+        <div class="contenido-modal victoria">
+
+            <div class="icono-victoria">🏆</div>
+
+            <span class="tag">¡ACTIVIDAD COMPLETADA!</span>
+
+            <h2>¡Excelente trabajo!</h2>
+
+            <p>
+                Has encontrado todas las palabras
+                de este periodo histórico.
+            </p>
+
+            <div class="resultado-final">
+                <strong id="resultadoFinal">5/5</strong>
+                <span>Palabras encontradas</span>
+            </div>
+
+            <button id="btnRepetir">
+                ↻ Jugar otra vez
+            </button>
+
+            <button id="btnVictoriaInicio" class="boton-secundario">
+                Volver al inicio
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="sopa.js"></script>
+
+</body>
+</html>
+
+
+
